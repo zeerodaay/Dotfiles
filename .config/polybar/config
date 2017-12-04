@@ -1,0 +1,396 @@
+#
+#          ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+#	   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+#	   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+#	   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+#	   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+#	   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+#                                                       
+#
+#
+#                ╔══════════════════════════════════════════╗
+#                ║           Created by ZeeroDaay           ║
+#                ║                                          ║
+#                ║        Email:zeerodaay@protonmail.com    ║
+#                ║                                          ║
+#                ╚══════════════════════════════════════════╝
+
+###########
+# GENERAL #
+###########
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[colors]
+background = #1cb3ff
+background-alt = #1793d1
+foreground = #f4f4f4
+foreground-alt = #cccccc
+primary = #1cb3ff
+secondary = #1793d1
+alert = #333333
+
+
+###########
+# BAR TOP #
+###########
+
+[bar/top]
+width = 100%
+height = 27
+radius = 0
+fixed-center = true
+
+background = #00000000
+foreground = #f4f4f4
+
+line-size = 2
+line-color = ${bar/bottom.background}
+border-size = 4
+border-color = #00000000
+
+spacing = 1
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 2
+module-margin-right = 0
+
+#########
+# FONTS #
+#########
+
+font-0 = Fantasque Sans Mono:pixelsize=10;1
+font-1 = Exo 2:pixelsize=10;1
+font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = siji:pixelsize=10;1
+font-4 = FontAwesome:pixelsize=10;0
+
+#####################
+# MODULES: POSITION #
+#####################
+
+modules-left = pkg
+modules-center = xwindow
+modules-right = volume backlight wlan eth battery date
+
+
+##############
+# BAR BOTTOM #
+##############
+
+[bar/bottom]
+bottom = true
+width = 100%
+heidht = 27
+fixed-center = true
+
+background = #111111
+foreground = #f4f4f4
+
+
+line-color = ${bar/top.background}
+line-size = 2
+
+spacing = 1
+padding-right = 1
+module-margin-left = 2
+module-margin-right = 0
+
+
+#########
+# FONTS #
+#########
+
+;font-0 = Fantasque Sans Mono:pixelsize=10;1
+font-0 = Exo 2:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;1
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=11;1
+
+
+#####################
+# MODULES: POSITION #
+#####################
+
+modules-left = mpd
+modules-center = i3
+modules-right = cpu memory usb
+
+
+###########
+# MODULES #
+###########
+
+
+###########
+# XWINDOW #
+###########
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+label = .:[%title%]:.
+label-maxlen = 75
+
+
+######
+# i3 #
+######
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+pin-workspaces = true
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+format = <label-state>
+
+label-mode = "%mode%"
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+label-mode-padding = 3
+
+label-focused = "%icon%"
+label-focused-foreground = ${colors.background}
+label-focused-background = #333333
+label-focused-underline = 
+label-focused-padding = 4
+
+label-unfocused = "%icon%"
+label-unfocused-padding = 4
+
+label-urgent = "%icon%"
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background}
+label-urgent-padding = 4
+
+label-visible-foreground = ${colors.foreground}
+label-visible-background = ${colors.background}
+label-visible-padding = 4
+
+#######
+# MPD #
+#######
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <icon-repeat> <icon-random> <bar-progress> <label-time> <label-song>
+format-stopped = <icon-prev>   <toggle>   <icon-next>   0:00/0:00   %{B-}
+format-online-spacing = 0
+format-prefix = ""
+format-online-padding = 3
+format-offline = <label-offline>
+format-offline-foreground = #777
+label-offline =  mpd is offline
+label-song-maxlen = 45
+label-song-ellipsis = true
+label-time-foreground =  ${colors.secondary}
+
+icon-play = ⏵
+icon-pause = ⏸
+icon-stop = ⏹
+icon-prev = ⏮
+icon-next = ⏭
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground = f4f4f4
+toggle-off-foreground = #333333
+
+bar-progress-width = 20
+bar-progress-indicator = 
+bar-progress-indicator-foreground = ${colors.secondary}
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = ${colors.secondary}
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-foreground = ${colors.secondary}
+bar-progress-empty-font = 3
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+
+#######
+# CPU #
+#######
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label> <ramp-coreload>
+label = 
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #1cb3ff
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #1cb3ff
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #1cb3ff
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #1793d1
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #1793d1
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #1793d1
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #f4f4f4
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #f4f4f4
+
+##########
+# MEMORY #
+##########
+
+[module/memory]
+type = internal/memory
+interval = 0.2
+format = <label> <bar-used>
+
+label = 
+label-font = 3
+label-foreground = #f4f4f4
+
+bar-used-width = 42
+bar-used-gradient = true
+bar-used-foreground-0 = #1cb3ff
+bar-used-foreground-1 = #1cb3ff
+bar-used-foreground-2 = #1793d1
+bar-used-foreground-3 = #1793d1
+bar-used-indicator = |
+bar-used-indicator-font = 10
+bar-used-indicator-foreground = #f4f4f4
+bar-used-fill = |
+bar-used-fill-font = 10
+bar-used-empty = |
+bar-used-empty-font = 10
+bar-used-empty-foreground = #333333
+
+########
+# WLAN #
+########
+
+[module/wlan]
+type = internal/network
+interface = net1
+interval = 3.0
+ping-interval = 10
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+label-disconnected =    not connected
+label-disconnected-foreground = #66
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
+#######
+# ETH #
+#######
+
+[module/eth]
+type = internal/network
+interface = enp2s0
+interval = 3.0
+
+label-connected =  %{T3}%local_ip%%{T-}
+label-disconnected-foreground = #66
+
+########
+# DATE #
+########
+
+[module/date]
+type = internal/date
+date =  %%{F#f4f4f4}%Y-%m-%d%%{F-}  %%{F#f4f4f4}%H:%M%%{F-}
+date-alt = %%{F#f4f4f4}%A, %d %B %Y  %%{F#f4f4f4}%H:%M%%{F#f4f4f4:%%{F#f4f4f4}%S%%{F-}
+
+label = %date% %time%
+
+##########
+# VOLUME #
+##########
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = f4f4f4
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #1cb3ff
+bar-volume-foreground-1 = #1cb3ff
+bar-volume-foreground-2 = #1cb3ff
+bar-volume-foreground-3 = #1793d1
+bar-volume-foreground-4 = #1793d1
+bar-volume-foreground-5 = #f4f4f4
+bar-volume-foreground-6 = #f4f4f4
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = #333333
+
+################
+# ARCH UPDATES #
+################
+
+[module/pkg]
+type = custom/script
+interval = 2
+format = <label>
+format-underline = #f4f4f4
+label = "%output:0:30%"
+exec = ~/.config/polybar/pkg.sh
+
+#######
+# USB #
+#######
+
+[module/usb]
+type = custom/script
+interval = 10
+; Could be exec = ~/.config/polybar/usb.sh /media/$USER
+exec = ~/.config/polybar/usb.sh
+; Unmount every devices on click
+click-left = udiskie-umount -a
+label = "%output:0:80%"
+format = "<label>"
+

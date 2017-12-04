@@ -1,0 +1,176 @@
+#
+#	   		██╗██████╗ ██╗    ██╗███╗   ███╗
+#	   		██║╚════██╗██║    ██║████╗ ████║
+#	   		██║ █████╔╝██║ █╗ ██║██╔████╔██║
+#	   		██║ ╚═══██╗██║███╗██║██║╚██╔╝██║
+#	   		██║██████╔╝╚███╔███╔╝██║ ╚═╝ ██║
+#	   		╚═╝╚═════╝  ╚══╝╚══╝ ╚═╝     ╚═╝
+#
+#
+#                ╔══════════════════════════════════════════╗
+#                ║           Created by ZeeroDaay           ║
+#                ║                                          ║
+#                ║        Email:zeerodaay@protonmail.com    ║
+#                ║                                          ║
+#                ╚══════════════════════════════════════════╝
+
+###########
+# GENERAL #
+###########
+
+set $mod Mod4
+font pango:Fantasque Sans Mono 10
+new_window pixel 3
+focus_follows_mouse  yes
+floating_modifier $mod
+
+###############
+# Keybindings #
+###############
+
+bindsym $mod+m exec firefox
+bindsym $mod+Return exec urxvt
+bindsym $mod+r exec urxvt -e ranger
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec rofi -show run
+bindsym $mod+v exec urxvt -e vim
+bindsym $mod+p exec urxvt -e htop
+bindsym --release Print exec --no-startup-id scrot %Y-%m-%d-%T.png -e 'mv $f ~/Imagens/screenshots/'
+
+################
+# WINDOW FOCUS #
+################
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+#######################
+# MOVE FOCUSED WINDOW #
+#######################
+
+bindsym $mod+Shift+h move left 30px
+bindsym $mod+Shift+j move down 30px
+bindsym $mod+Shift+k move up 30px
+bindsym $mod+Shift+l move right 30px
+
+#################
+# WINDOW RESIZE #
+#################
+
+bindsym $mod+Ctrl+h resize shrink width 30 px or 10 ppt
+bindsym $mod+Ctrl+j resize shrink height 30 px or 10 ppt
+bindsym $mod+Ctrl+k resize grow height 30 px or 10 ppt
+bindsym $mod+Ctrl+l resize grow width 30 px or 10 ppt 
+
+##########
+# TILING #
+##########
+
+bindsym $mod+y split h
+bindsym $mod+u split v
+bindsym $mod+g split toggle
+bindsym $mod+f fullscreen
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+#########
+# Audio #
+#########
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -Mq set Master,0 5%+ unmute"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -Mq set Master,0 5%- unmute"
+bindsym XF86AudioMute exec --no-startup-id "pamixer -t"
+
+#############
+# WORKSPACE #
+#############
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+#######################
+# MOVE FOCUSED WINDOW #
+#######################
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+###################
+# SPECIFIC WINDOW #
+###################
+for_window [class="(?i)urxvt"] floating enable, resize set 1350 650, move position center, border pixel 1
+for_window [window_role="browser|GtkFileChooserDialog"] resize set 800 600, move position center
+for_window [class="(?i)pavucontrol|lxappearance"] floating enable, resize set 900 650
+for_window [class="(?i)telegram|weechat|irss"] floating enable, resize set 1366 700, move position center, border pixel 1
+
+######################
+# SPECIFIC WORKSPACE #
+######################
+
+assign [title="(?i)urxvt"] $ws2
+assign [class="(?i)subl3|mupdf"] $ws3
+assign [window_role="browser"] $ws4
+assign [class="(?i)telegram"] $ws6
+assign [class="(?i)weechat|irssi"] $ws7
+assign [class="(?i)simplescreenrecorder|gimp|vlc|feh"] $ws9
+
+
+##########
+# COLORS #
+##########
+
+set $blue "#1cb3ff"
+set $dblue "#1793d1"
+set $white "#f4f4f4"
+set $gray "#cccccc"
+set $jet "#333333"
+
+#<colorclass>           <border> <background> <text> <indicator> <child_border>
+client.focused          $blue    $blue    $dblue  $gray  $blue
+client.focused_inactive $blue    $white   $dblue  $jet   $white
+client.unfocused        $blue    $white   $dblue  $jet   $white
+client.urgent           $blue    $white   $dblue  $gray  $white
+
+###################
+# START ON SYSTEM #
+###################
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton
+exec --no-startup-id mpd
