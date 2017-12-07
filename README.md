@@ -1,5 +1,6 @@
 # `MySetup`
 
+[![sample screenshot](https://github.com/zeerodaay/Dotfiles/blob/master/screenshot.png)](https://github.com/zeerodaay/Dotfiles/blob/master/screenshot.png)
 | Description         |     Packages                               |
 | :----------:        | ------------------------------------------ |
 | `Window Manager`    | <kbd>i3</kbd>				   |
